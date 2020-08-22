@@ -1,25 +1,36 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
 
-const AddAlarm = () => {
+const AddAlarm = ({ navigation }) => {
   return (
-    <View style={style.addBtn2}>
-      <View style={style.addBtn}>
+    <View style={style.btnPlace}>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        style={style.addBtn}
+        onPress={() => navigation.navigate("Edit")}
+      >
         <Image
           style={style.add}
           source={require("../../assets/images/add.png")}
         />
         <Text style={style.addText}>새 알람 추가</Text>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const style = StyleSheet.create({
-  addBtn2: {
+  btnPlace: {
     width: "100%",
     alignItems: "center",
     position: "absolute",
