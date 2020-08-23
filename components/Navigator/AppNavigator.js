@@ -1,13 +1,23 @@
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import MainScreen from "../MainScreen/MainScreen";
-import EditScreen from "../EditScreen/EditScreen";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
+import MainScreen from "../../Screens/MainScreen/MainScreen";
+import AddScreen from "../../Screens/AddScreen/AddScreen";
 
-const AppNavigator = createSwitchNavigator(
+const AppNavigator = createStackNavigator(
   {
-    Main: { screen: MainScreen },
-    Edit: { screen: EditScreen },
+    Main: {
+      screen: MainScreen,
+    },
+    Add: {
+      screen: AddScreen,
+    },
   },
-  { initialRouteName: "Main" }
+  {
+    defaultNavigationOptions: {
+      headerShown: null,
+    },
+    initialRouteName: "Main",
+  }
 );
 
 export default createAppContainer(AppNavigator);

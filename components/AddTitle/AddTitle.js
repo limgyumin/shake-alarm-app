@@ -1,0 +1,34 @@
+import React from "react";
+import { View, Text, StyleSheet, Dimensions } from "react-native";
+
+const screenWidth = Math.round(Dimensions.get("window").width);
+const screenHeight = Math.round(Dimensions.get("window").height);
+
+const AddTitle = () => {
+  return (
+    <View style={style.textView}>
+      <Text style={style.text1}>시간을 정해주세요</Text>
+      <Text style={style.text2}>필요하면 메모도 괜찮아요</Text>
+    </View>
+  );
+};
+
+const style = StyleSheet.create({
+  textView: {
+    marginTop: screenHeight * 0.008,
+    marginLeft: screenWidth * 0.04,
+  },
+  text1: {
+    fontSize: screenWidth * 0.075,
+    fontWeight: "700",
+    color: "#364C6E",
+    marginBottom: screenHeight * 0.004,
+  },
+  text2: {
+    fontSize: screenWidth * 0.06,
+    fontWeight: "300",
+    color: "#364C6E",
+  },
+});
+
+export default AddTitle;

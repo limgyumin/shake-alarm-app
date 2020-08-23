@@ -17,7 +17,7 @@ const AddAlarm = ({ navigation }) => {
       <TouchableOpacity
         activeOpacity={0.8}
         style={style.addBtn}
-        onPress={() => navigation.navigate("Edit")}
+        onPress={() => navigation.navigate("Add")}
       >
         <Image
           style={style.add}
