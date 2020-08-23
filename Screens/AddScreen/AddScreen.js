@@ -3,17 +3,19 @@ import { View, Text, StyleSheet } from "react-native";
 import SelectTime from "../../components/SelectTime/SelectTime";
 import AddTitle from "../../components/AddTitle/AddTitle";
 import AddBack from "../../components/AddBack/AddBack";
+import SetTimeBtn from "../../components/SetTimeBtn/SetTimeBtn";
 
 const AddScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
+    <View style={style.container}>
       <AddBack navigation={navigation} />
       <AddTitle />
+      <SetTimeBtn />
     </View>
   );
 };
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   container: {
     flex: 1,
   },
