@@ -14,7 +14,7 @@ const AddBack = ({ navigation }) => {
   return (
     <TouchableOpacity
       style={style.backView}
-      activeOpacity={0.8}
+      activeOpacity={0.6}
       onPress={() => navigation.pop()}
     >
       <Image
@@ -27,7 +27,7 @@ const AddBack = ({ navigation }) => {
 
 const style = StyleSheet.create({
   backView: {
-    width: "100%",
+    width: "10%",
     height: "12%",
   },
   back: {

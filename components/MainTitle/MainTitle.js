@@ -19,13 +19,13 @@ const style = StyleSheet.create({
     marginLeft: screenWidth * 0.04,
   },
   text1: {
-    fontSize: screenWidth * 0.075,
+    fontSize: screenWidth * 0.068,
     fontWeight: "700",
     color: "#364C6E",
-    marginBottom: screenHeight * 0.004,
+    marginBottom: screenHeight * 0.001,
   },
   text2: {
-    fontSize: screenWidth * 0.06,
+    fontSize: screenWidth * 0.056,
     fontWeight: "300",
     color: "#364C6E",
   },

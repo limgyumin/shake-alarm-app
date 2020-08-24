@@ -17,7 +17,7 @@ const EditAlarm = () => {
 
 const style = StyleSheet.create({
   editView: {
-    width: "100%",
+    width: "10%",
     height: "12%",
   },
   edit: {

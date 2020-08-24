@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -6,15 +6,19 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
+  YellowBox,
 } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import moment from "moment";
+import NumberTicker from "react-native-number-ticker";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
 
 const SetTimeBtn = () => {
   const [visible, setVisible] = useState(false);
+  const [time, setTime] = useState(0);
+
   const showDateTimePicker = () => {
     setVisible(true);
   };
@@ -22,16 +26,34 @@ const SetTimeBtn = () => {
     setVisible(false);
   };
   const handleTimePicked = (time) => {
-    console.log(`${moment(time).format("HH시 mm분")}`);
+    setTime(time);
     hideDateTimePicker();
   };
 
   return (
     <>
+      <View style={style.timePlace}>
+        <View style={style.timeShowPlace}>
+          <NumberTicker
+            textStyle={style.timeShow}
+            duration={1500}
+            number={parseInt(moment(time).format("HH"))}
+          />
+        </View>
+        <Text style={style.time}>시 </Text>
+        <View style={style.timeShowPlace}>
+          <NumberTicker
+            textStyle={style.timeShow}
+            duration={1500}
+            number={parseInt(moment(time).format("mm"))}
+          />
+        </View>
+        <Text style={style.time}>분</Text>
+      </View>
       <View style={style.btnPlace}>
         <TouchableOpacity
           style={style.timeBtn}
-          activeOpacity={0.8}
+          activeOpacity={0.7}
           onPress={() => showDateTimePicker()}
         >
           <Text style={style.timeText}>알람 시간 설정</Text>
@@ -57,16 +79,37 @@ const SetTimeBtn = () => {
 };
 
 const style = StyleSheet.create({
+  timePlace: {
+    width: "100%",
+    height: screenHeight * 0.1,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: screenHeight * 0.03,
+  },
+  timeShowPlace: {
+    marginBottom: screenHeight * 0.01,
+  },
+  timeShow: {
+    color: "#0066FF",
+    fontWeight: "700",
+  },
+  time: {
+    color: "#0066FF",
+    fontWeight: "700",
+    fontSize: screenWidth * 0.08,
+    margin: 1,
+  },
   btnPlace: {
     width: "100%",
     alignItems: "center",
-    marginTop: screenHeight * 0.094,
+    marginTop: screenHeight * 0.01,
   },
   timeBtn: {
     width: screenWidth * 0.908,
-    height: screenHeight * 0.062,
+    height: screenHeight * 0.066,
     backgroundColor: "#C8DEFF",
-    borderRadius: screenWidth * 0.036,
+    borderRadius: screenWidth * 0.03,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -74,13 +117,12 @@ const style = StyleSheet.create({
   timeText: {
     color: "#0066FF",
     fontWeight: "500",
-    fontSize: screenWidth * 0.046,
+    fontSize: screenWidth * 0.04,
     marginRight: screenWidth * 0.014,
   },
   arrow: {
-    color: "#0066FF",
-    width: screenWidth * 0.045,
-    height: screenWidth * 0.045,
+    width: screenWidth * 0.044,
+    height: screenWidth * 0.044,
   },
 });
 
