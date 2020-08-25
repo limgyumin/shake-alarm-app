@@ -8,34 +8,25 @@ import {
   Dimensions,
 } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
-import NumberTicker from "react-native-number-ticker";
+import NumberTicker from "../NumberTicker/NumberTicker";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
 
-const SetTimeBtn = () => {
-  const [visible, setVisible] = useState(false);
-  const [time, setTime] = useState(new Date());
-
-  const showDateTimePicker = () => {
-    setVisible(true);
-  };
-  const hideDateTimePicker = () => {
-    setVisible(false);
-  };
-  const handleTimePicked = (time) => {
-    setTime(new Date(time));
-    hideDateTimePicker();
-    console.log(time.getMinutes());
-  };
-
+const SetTimeBtn = ({
+  visible,
+  time,
+  showDateTimePicker,
+  hideDateTimePicker,
+  handleTimePicked,
+}) => {
   return (
     <>
       <View style={style.timePlace}>
         <View style={style.timeShowPlace}>
           <NumberTicker
             textStyle={style.timeShow}
-            duration={1500}
+            duration={1200}
             number={time.getHours()}
           />
         </View>
@@ -43,7 +34,7 @@ const SetTimeBtn = () => {
         <View style={style.timeShowPlace}>
           <NumberTicker
             textStyle={style.timeShow}
-            duration={1500}
+            duration={1200}
             number={time.getMinutes()}
           />
         </View>
@@ -67,7 +58,7 @@ const SetTimeBtn = () => {
         cancelTextIOS={"취소"}
         headerTextIOS={"알람 시간 설정"}
         timePickerModeAndroid={"spinner"}
-        // date={time}
+        date={time}
         mode={"time"}
         is24Hour={false}
         isVisible={visible}
@@ -107,7 +98,7 @@ const style = StyleSheet.create({
   },
   timeBtn: {
     width: screenWidth * 0.908,
-    height: screenHeight * 0.066,
+    height: screenHeight * 0.062,
     backgroundColor: "#C8DEFF",
     borderRadius: screenWidth * 0.03,
     flexDirection: "row",
