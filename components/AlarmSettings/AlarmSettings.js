@@ -13,26 +13,12 @@ import ToggleSwitch from "toggle-switch-react-native";
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
 
-const AlarmSettings = () => {
-  const [nofActivate, setNofActivate] = useState(true);
-  const [sleepActivate, setSleepActivate] = useState(true);
-
-  const nofToggleActivate = () => {
-    if (nofActivate === true) {
-      setNofActivate(false);
-    } else {
-      setNofActivate(true);
-    }
-  };
-
-  const sleepToggleActivate = () => {
-    if (sleepActivate === true) {
-      setSleepActivate(false);
-    } else {
-      setSleepActivate(true);
-    }
-  };
-
+const AlarmSettings = ({
+  nofActivate,
+  sleepActivate,
+  nofToggleActivate,
+  sleepToggleActivate,
+}) => {
   return (
     <View style={{ marginTop: screenHeight * 0.1 }}>
       <TouchableHighlight

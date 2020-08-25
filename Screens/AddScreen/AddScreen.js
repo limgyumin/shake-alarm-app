@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, YellowBox } from "react-native";
+import { View, StyleSheet, YellowBox, AsyncStorage } from "react-native";
 import AddTitle from "../../components/AddTitle/AddTitle";
-import AddBack from "../../components/BackButton/BackButton";
+import BackButton from "../../components/BackButton/BackButton";
 import SetTimeBtn from "../../components/SetTimeBtn/SetTimeBtn";
 import AlarmSettings from "../../components/AlarmSettings/AlarmSettings";
 import SaveButton from "../../components/SaveButton/SaveButton";
-import { createAlarm } from "react-native-simple-alarm";
 
 const AddScreen = ({ navigation }) => {
   const [visible, setVisible] = useState(false);
   const [time, setTime] = useState(new Date());
+  const [nofActivate, setNofActivate] = useState(true);
+  const [sleepActivate, setSleepActivate] = useState(true);
 
   useEffect(() => {
     YellowBox.ignoreWarnings([
@@ -30,20 +31,27 @@ const AddScreen = ({ navigation }) => {
     hideDateTimePicker();
   };
 
-  const createNewAlarm = async () => {
-    try {
-      await createAlarm({
-        active: true,
-        date: moment(time).format("YYYY-MM-DD"),
-        message: "message",
-        snooze: 1,
-      });
-    } catch (e) {}
+  const nofToggleActivate = () => {
+    if (nofActivate === true) {
+      setNofActivate(false);
+    } else {
+      setNofActivate(true);
+    }
   };
+
+  const sleepToggleActivate = () => {
+    if (sleepActivate === true) {
+      setSleepActivate(false);
+    } else {
+      setSleepActivate(true);
+    }
+  };
+
+  let alarmData = {};
 
   return (
     <View style={style.container}>
-      <AddBack navigation={navigation} />
+      <BackButton navigation={navigation} />
       <AddTitle />
       <SetTimeBtn
         visible={visible}
@@ -52,8 +60,13 @@ const AddScreen = ({ navigation }) => {
         hideDateTimePicker={hideDateTimePicker}
         handleTimePicked={handleTimePicked}
       />
-      <AlarmSettings />
-      <SaveButton createNewAlarm={createNewAlarm} />
+      <AlarmSettings
+        nofActivate={nofActivate}
+        sleepActivate={sleepActivate}
+        nofToggleActivate={nofToggleActivate}
+        sleepToggleActivate={sleepToggleActivate}
+      />
+      <SaveButton />
     </View>
   );
 };
