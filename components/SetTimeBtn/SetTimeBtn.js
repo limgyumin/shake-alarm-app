@@ -6,10 +6,8 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-  YellowBox,
 } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
-import moment from "moment";
 import NumberTicker from "react-native-number-ticker";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
@@ -17,7 +15,7 @@ const screenHeight = Math.round(Dimensions.get("window").height);
 
 const SetTimeBtn = () => {
   const [visible, setVisible] = useState(false);
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(new Date());
 
   const showDateTimePicker = () => {
     setVisible(true);
@@ -26,8 +24,9 @@ const SetTimeBtn = () => {
     setVisible(false);
   };
   const handleTimePicked = (time) => {
-    setTime(time);
+    setTime(new Date(time));
     hideDateTimePicker();
+    console.log(time.getMinutes());
   };
 
   return (
@@ -37,7 +36,7 @@ const SetTimeBtn = () => {
           <NumberTicker
             textStyle={style.timeShow}
             duration={1500}
-            number={parseInt(moment(time).format("HH"))}
+            number={time.getHours()}
           />
         </View>
         <Text style={style.time}>시 </Text>
@@ -45,7 +44,7 @@ const SetTimeBtn = () => {
           <NumberTicker
             textStyle={style.timeShow}
             duration={1500}
-            number={parseInt(moment(time).format("mm"))}
+            number={time.getMinutes()}
           />
         </View>
         <Text style={style.time}>분</Text>
@@ -68,6 +67,7 @@ const SetTimeBtn = () => {
         cancelTextIOS={"취소"}
         headerTextIOS={"알람 시간 설정"}
         timePickerModeAndroid={"spinner"}
+        // date={time}
         mode={"time"}
         is24Hour={false}
         isVisible={visible}
