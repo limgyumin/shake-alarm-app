@@ -13,6 +13,8 @@ import ShowAlarms from "../../components/ShowAlarms/ShowAlarms";
 
 const MainScreen = ({ navigation }) => {
   const [alarmDatas, setAlarmDatas] = useState([]);
+  const [refresh, setRefresh] = useState();
+  let number = 1;
 
   useEffect(() => {
     YellowBox.ignoreWarnings([
@@ -22,12 +24,13 @@ const MainScreen = ({ navigation }) => {
 
   useEffect(() => {
     getAlarmData();
-  }, [navigation.state.params]);
+  }, [navigation.state.params, refresh]);
 
   const removeAllData = () => {
     AsyncStorage.getAllKeys((err, keys) => {
       AsyncStorage.multiRemove(keys, (err) => {
         console.log("data all removed");
+        setRefresh(number + 1);
       });
     });
   };
@@ -69,8 +72,8 @@ const MainScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <EditAlarm removeAllData={removeAllData} />
-      <MainTitle />
       <ScrollView showsVerticalScrollIndicator={false}>
+        <MainTitle />
         {alarmDatas.map((data, index) => (
           <ShowAlarms
             key={index}

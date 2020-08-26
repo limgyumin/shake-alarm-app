@@ -7,10 +7,18 @@ const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
 
 const ShowAlarms = ({ value, activated, memo, notify, sleep, time }) => {
+  const sliceText = (string, maxLen) => {
+    if (string.length > maxLen) {
+      return string.slice(0, maxLen) + "...";
+    } else {
+      return string;
+    }
+  };
+
   return (
     <View style={style.alarmPlace}>
       <View style={style.textPlace}>
-        <Text style={style.memo}>{memo ? memo : "알람"}</Text>
+        <Text style={style.memo}>{memo ? sliceText(memo, 20) : "알람"}</Text>
         <Text style={style.time}>{moment(time).format("HH:mm")}</Text>
       </View>
       <View style={style.toggleBtn}>
