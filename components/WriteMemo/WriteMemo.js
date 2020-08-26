@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, TextInput, StyleSheet, Dimensions } from "react-native";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
@@ -29,6 +29,7 @@ const style = StyleSheet.create({
     color: "#0066FF",
     width: screenWidth * 0.908,
     height: screenHeight * 0.062,
+    fontSize: screenWidth * 0.043,
     borderRadius: screenWidth * 0.03,
     paddingHorizontal: screenWidth * 0.04,
   },

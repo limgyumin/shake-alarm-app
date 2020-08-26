@@ -1,17 +1,21 @@
 import React from "react";
-import { View, StyleSheet, Image, Dimensions } from "react-native";
+import { StyleSheet, Image, Dimensions, TouchableOpacity } from "react-native";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
 
-const EditAlarm = () => {
+const EditAlarm = ({ removeAllData }) => {
   return (
-    <View style={style.editView}>
+    <TouchableOpacity
+      style={style.editView}
+      activeOpacity={0.6}
+      onPress={() => removeAllData()}
+    >
       <Image
         style={style.edit}
         source={require("../../assets/images/edit.png")}
       />
-    </View>
+    </TouchableOpacity>
   );
 };
 

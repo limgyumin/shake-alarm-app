@@ -88,14 +88,6 @@ const AddScreen = ({ navigation }) => {
     [checkKeyValues]
   );
 
-  const removeAllData = () => {
-    AsyncStorage.getAllKeys((err, keys) => {
-      AsyncStorage.multiRemove(keys, (err) => {
-        console.log("data all removed");
-      });
-    });
-  };
-
   return (
     <View style={style.container}>
       <BackButton navigation={navigation} />

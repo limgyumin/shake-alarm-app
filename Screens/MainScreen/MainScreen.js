@@ -24,6 +24,14 @@ const MainScreen = ({ navigation }) => {
     getAlarmData();
   }, [navigation.state.params]);
 
+  const removeAllData = () => {
+    AsyncStorage.getAllKeys((err, keys) => {
+      AsyncStorage.multiRemove(keys, (err) => {
+        console.log("data all removed");
+      });
+    });
+  };
+
   const getAlarmData = async () => {
     await AsyncStorage.getAllKeys((err, keys) => {
       AsyncStorage.multiGet(keys, (err, datas) => {
@@ -60,9 +68,9 @@ const MainScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <EditAlarm />
+      <EditAlarm removeAllData={removeAllData} />
       <MainTitle />
-      <ScrollView showsHorizontalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         {alarmDatas.map((data, index) => (
           <ShowAlarms
             key={index}

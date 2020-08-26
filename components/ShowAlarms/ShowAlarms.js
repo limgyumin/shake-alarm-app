@@ -1,11 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableHighlight,
-  Dimensions,
-} from "react-native";
+import { StyleSheet, Text, View, Dimensions } from "react-native";
 import moment from "moment";
 import ToggleSwitch from "toggle-switch-react-native";
 
@@ -24,7 +18,7 @@ const ShowAlarms = ({ value, activated, memo, notify, sleep, time }) => {
           isOn={true}
           onColor="#0066FF"
           offColor="#B4C1D5"
-          size={"medium"}
+          size={"large"}
           onToggle={() => {}}
         />
       </View>
@@ -54,7 +48,6 @@ const style = StyleSheet.create({
   time: {
     color: "#768AA8",
     fontSize: screenWidth * 0.09,
-    fontWeight: "100",
   },
 });
 
