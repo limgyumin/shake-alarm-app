@@ -5,12 +5,14 @@ import BackButton from "../../components/BackButton/BackButton";
 import SetTimeBtn from "../../components/SetTimeBtn/SetTimeBtn";
 import AlarmSettings from "../../components/AlarmSettings/AlarmSettings";
 import SaveButton from "../../components/SaveButton/SaveButton";
+import WriteMemo from "../../components/WriteMemo/WriteMemo";
 
 const AddScreen = ({ navigation }) => {
   const [visible, setVisible] = useState(false);
   const [time, setTime] = useState(new Date());
   const [nofActivate, setNofActivate] = useState(true);
   const [sleepActivate, setSleepActivate] = useState(true);
+  const [memo, setMemo] = useState("");
 
   useEffect(() => {
     YellowBox.ignoreWarnings([
@@ -32,16 +34,16 @@ const AddScreen = ({ navigation }) => {
   };
 
   const nofToggleActivate = useCallback(() => {
-    if (nofActivate === true) {
-      setNofActivate(false);
-    } else {
-      setNofActivate(true);
-    }
+    setNofActivate(!nofActivate);
   }, [nofActivate]);
 
   const sleepToggleActivate = useCallback(() => {
     setSleepActivate(!sleepActivate);
   }, [sleepActivate]);
+
+  const handleMemo = (text) => {
+    setMemo(text);
+  };
 
   const checkKeyValues = useCallback(async () => {
     try {
@@ -60,13 +62,14 @@ const AddScreen = ({ navigation }) => {
     } catch (error) {
       console.log(error);
     }
-  }, [time, nofActivate, sleepActivate]);
+  }, [time, memo, nofActivate, sleepActivate]);
 
   const setAlarmData = useCallback(
     async (value) => {
       console.log(value);
       let alarmData = {
         time: time,
+        memo: memo,
         notify: nofActivate,
         sleep: sleepActivate,
       };
@@ -86,7 +89,9 @@ const AddScreen = ({ navigation }) => {
 
   const removeAllData = () => {
     AsyncStorage.getAllKeys((err, keys) => {
-      AsyncStorage.multiRemove(keys);
+      AsyncStorage.multiRemove(keys, (err) => {
+        console.log("data all removed");
+      });
     });
   };
 
@@ -101,6 +106,7 @@ const AddScreen = ({ navigation }) => {
         hideDateTimePicker={hideDateTimePicker}
         handleTimePicked={handleTimePicked}
       />
+      <WriteMemo handleMemo={handleMemo} />
       <AlarmSettings
         nofActivate={nofActivate}
         sleepActivate={sleepActivate}

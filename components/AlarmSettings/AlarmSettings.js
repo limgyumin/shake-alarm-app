@@ -20,7 +20,7 @@ const AlarmSettings = ({
   sleepToggleActivate,
 }) => {
   return (
-    <View style={{ marginTop: screenHeight * 0.1 }}>
+    <View style={{ marginTop: screenHeight * 0.07 }}>
       <TouchableHighlight
         style={style.btnPlace}
         underlayColor="#ECF3FE"

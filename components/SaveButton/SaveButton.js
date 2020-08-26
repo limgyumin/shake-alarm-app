@@ -1,18 +1,18 @@
 import React from "react";
-import { Text, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
+import { Text, TouchableHighlight, StyleSheet, Dimensions } from "react-native";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
 
 const SaveButton = ({ checkKeyValues }) => {
   return (
-    <TouchableOpacity
+    <TouchableHighlight
       style={style.saveBtn}
-      activeOpacity={0.7}
+      underlayColor="#3083FF"
       onPress={() => checkKeyValues()}
     >
       <Text style={style.saveTitle}>저장하기</Text>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 
