@@ -38,7 +38,7 @@ const style = StyleSheet.create({
     bottom: 42,
   },
   addBtn: {
-    width: screenWidth * 0.39,
+    width: screenWidth * 0.35,
     height: screenHeight * 0.052,
     backgroundColor: "#0066FF",
     borderRadius: screenWidth * 0.06,
@@ -55,7 +55,7 @@ const style = StyleSheet.create({
     color: "#FFFFFF",
     fontWeight: "500",
     fontSize: screenWidth * 0.04,
-    marginLeft: screenWidth * 0.014,
+    marginLeft: screenWidth * 0.018,
   },
 });
 

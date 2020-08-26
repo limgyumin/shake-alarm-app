@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Image, Dimensions, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, Dimensions, TouchableOpacity } from "react-native";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
@@ -11,25 +11,26 @@ const EditAlarm = ({ removeAllData }) => {
       activeOpacity={0.6}
       onPress={() => removeAllData()}
     >
-      <Image
-        style={style.edit}
-        source={require("../../assets/images/edit.png")}
-      />
+      <Text style={style.edit}>편집</Text>
     </TouchableOpacity>
   );
 };
 
 const style = StyleSheet.create({
   editView: {
-    width: "10%",
-    height: "12%",
+    width: "9%",
+    height: "5%",
+    marginTop: screenHeight * 0.06,
+    marginLeft: screenWidth * 0.04,
   },
   edit: {
     position: "absolute",
-    left: screenWidth * 0.04,
-    bottom: screenHeight * 0.01,
+    bottom: screenHeight * 0.0005,
     width: screenWidth * 0.08,
     height: screenWidth * 0.08,
+    fontSize: screenWidth * 0.042,
+    color: "#0066FF",
+    fontWeight: "700",
   },
 });
 
