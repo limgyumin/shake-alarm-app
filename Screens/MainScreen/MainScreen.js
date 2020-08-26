@@ -6,11 +6,17 @@ import AddAlarm from "../../components/AddAlarm/AddAlarm";
 import ShowAlarms from "../../components/ShowAlarms/ShowAlarms";
 
 const MainScreen = ({ navigation }) => {
+  const [alarmDatas, setAlarmDatas] = useState([]);
+
   useEffect(() => {
     YellowBox.ignoreWarnings([
       "Animated: `useNativeDriver` was not specified.",
     ]);
   }, []);
+
+  useEffect(() => {
+    getAlarmData();
+  }, [navigation.state.params]);
 
   const getAlarmData = async () => {
     await AsyncStorage.getAllKeys((err, keys) => {
@@ -33,6 +39,7 @@ const MainScreen = ({ navigation }) => {
           return 0;
         });
         console.log(datas);
+        setAlarmDatas(datas);
       });
     });
   };
@@ -41,7 +48,19 @@ const MainScreen = ({ navigation }) => {
     <View style={styles.container}>
       <EditAlarm />
       <MainTitle />
-      <ShowAlarms />
+      <View>
+        {alarmDatas.map((data, index) => (
+          <ShowAlarms
+            key={index}
+            value={data.key}
+            activated={data.activated}
+            memo={data.memo}
+            notify={data.notify}
+            sleep={data.sleep}
+            time={data.time}
+          />
+        ))}
+      </View>
       <AddAlarm navigation={navigation} />
     </View>
   );

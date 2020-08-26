@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { StyleSheet, View, Text, AsyncStorage } from "react-native";
 import moment from "moment";
 
-const ShowAlarms = ({ data }) => {
-  console.log(data);
+const ShowAlarms = ({ value, activated, memo, notify, sleep, time }) => {
   return (
     <View>
-      <Text></Text>
+      <Text>{memo}</Text>
+      <Text>{time}</Text>
     </View>
   );
 };
