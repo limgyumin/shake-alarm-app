@@ -66,12 +66,12 @@ const AddScreen = ({ navigation }) => {
 
   const setAlarmData = useCallback(
     async (value) => {
-      console.log(value);
       let alarmData = {
         time: time,
         memo: memo,
         notify: nofActivate,
         sleep: sleepActivate,
+        activated: true,
       };
       let key = String(value);
       await AsyncStorage.setItem(key, JSON.stringify(alarmData), () => {
@@ -82,7 +82,7 @@ const AddScreen = ({ navigation }) => {
           console.log(datas);
         });
       });
-      navigation.pop();
+      //removeAllData();
     },
     [checkKeyValues]
   );

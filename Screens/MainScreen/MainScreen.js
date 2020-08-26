@@ -12,6 +12,31 @@ const MainScreen = ({ navigation }) => {
     ]);
   }, []);
 
+  const getAlarmData = async () => {
+    await AsyncStorage.getAllKeys((err, keys) => {
+      AsyncStorage.multiGet(keys, (err, datas) => {
+        datas.map((data, i) => {
+          const parsedData = JSON.parse(data[1]);
+          parsedData.key = data[0];
+          datas[i] = parsedData;
+        });
+        datas = datas.sort((a, b) => {
+          const aTime = new Date(a.time).getTime();
+          const bTime = new Date(b.time).getTime();
+
+          if (aTime > bTime) {
+            return 1;
+          }
+          if (aTime < bTime) {
+            return -1;
+          }
+          return 0;
+        });
+        console.log(datas);
+      });
+    });
+  };
+
   return (
     <View style={styles.container}>
       <EditAlarm />
