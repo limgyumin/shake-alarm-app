@@ -17,6 +17,7 @@ const style = StyleSheet.create({
   textPlace: {
     marginTop: screenHeight * 0.008,
     marginLeft: screenWidth * 0.04,
+    marginBottom: screenHeight * 0.03,
   },
   text1: {
     fontSize: screenWidth * 0.06,

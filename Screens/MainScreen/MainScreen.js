@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, YellowBox, AsyncStorage } from "react-native";
+import {
+  StyleSheet,
+  View,
+  YellowBox,
+  AsyncStorage,
+  ScrollView,
+} from "react-native";
 import EditAlarm from "../../components/EditAlarm/EditAlarm";
 import MainTitle from "../../components/MainTitle/MainTitle";
 import AddAlarm from "../../components/AddAlarm/AddAlarm";
@@ -22,14 +28,16 @@ const MainScreen = ({ navigation }) => {
     await AsyncStorage.getAllKeys((err, keys) => {
       AsyncStorage.multiGet(keys, (err, datas) => {
         datas.map((data, i) => {
-          const parsedData = JSON.parse(data[1]);
-          parsedData.key = data[0];
-          datas[i] = parsedData;
+          if (data[1]) {
+            const parsedData = JSON.parse(data[1]);
+            parsedData.key = data[0];
+            datas[i] = parsedData;
+          }
         });
+
         datas = datas.sort((a, b) => {
           const aTime = new Date(a.time).getTime();
           const bTime = new Date(b.time).getTime();
-
           if (aTime > bTime) {
             return 1;
           }
@@ -38,8 +46,14 @@ const MainScreen = ({ navigation }) => {
           }
           return 0;
         });
+
+        const check = datas[0];
+        if (check && check[1] !== null) {
+          setAlarmDatas(datas);
+        } else {
+          setAlarmDatas([]);
+        }
         console.log(datas);
-        setAlarmDatas(datas);
       });
     });
   };
@@ -48,7 +62,7 @@ const MainScreen = ({ navigation }) => {
     <View style={styles.container}>
       <EditAlarm />
       <MainTitle />
-      <View>
+      <ScrollView showsHorizontalScrollIndicator={false}>
         {alarmDatas.map((data, index) => (
           <ShowAlarms
             key={index}
@@ -60,7 +74,7 @@ const MainScreen = ({ navigation }) => {
             time={data.time}
           />
         ))}
-      </View>
+      </ScrollView>
       <AddAlarm navigation={navigation} />
     </View>
   );

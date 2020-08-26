@@ -82,8 +82,8 @@ const AddScreen = ({ navigation }) => {
           console.log(datas);
         });
       });
-      navigation.navigate("Main", { message: "completed" });
       //removeAllData();
+      navigation.navigate("Main", { message: "completed" });
     },
     [checkKeyValues]
   );

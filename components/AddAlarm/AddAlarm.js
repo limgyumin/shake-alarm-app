@@ -35,7 +35,7 @@ const style = StyleSheet.create({
     alignItems: "center",
     position: "absolute",
     zIndex: 10,
-    bottom: 74,
+    bottom: 42,
   },
   addBtn: {
     width: screenWidth * 0.39,
