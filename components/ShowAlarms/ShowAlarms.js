@@ -42,6 +42,7 @@ const style = StyleSheet.create({
     width: "100%",
     height: screenHeight * 0.12,
     paddingHorizontal: screenWidth * 0.04,
+    marginBottom: screenHeight * 0.01,
   },
   textPlace: {
     justifyContent: "center",

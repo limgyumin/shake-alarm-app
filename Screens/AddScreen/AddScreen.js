@@ -83,7 +83,7 @@ const AddScreen = ({ navigation }) => {
         });
       });
       //removeAllData();
-      navigation.navigate("Main", { message: "completed" });
+      navigation.navigate("Main", { message: "refresh" });
     },
     [checkKeyValues]
   );
