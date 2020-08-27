@@ -34,8 +34,11 @@ const MainScreen = ({ navigation }) => {
     });
   };
 
-  const selectAlarm = (value) => {
-    console.log(value);
+  const deleteSelectedData = async (value) => {
+    await AsyncStorage.removeItem(value, (err) => {
+      console.log("selected data removed");
+      setRefresh(refresh + 1);
+    });
   };
 
   const getAlarmData = async () => {
@@ -86,7 +89,7 @@ const MainScreen = ({ navigation }) => {
             notify={data.notify}
             sleep={data.sleep}
             time={data.time}
-            selectAlarm={selectAlarm}
+            deleteSelectedData={deleteSelectedData}
           />
         ))}
       </ScrollView>

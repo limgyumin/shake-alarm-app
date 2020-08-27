@@ -13,7 +13,7 @@ const ShowAlarms = ({
   notify,
   sleep,
   time,
-  selectAlarm,
+  deleteSelectedData,
 }) => {
   const sliceText = (string, maxLen) => {
     if (string.length > maxLen) {
@@ -27,7 +27,7 @@ const ShowAlarms = ({
     <View style={style.place}>
       <View style={style.alarmPlace}>
         <View style={style.textPlace}>
-          <Text style={style.memo}>{memo ? sliceText(memo, 20) : "알람"}</Text>
+          <Text style={style.memo}>{memo ? sliceText(memo, 16) : "알람"}</Text>
           <Text style={style.time}>{moment(time).format("HH:mm")}</Text>
         </View>
         <View style={style.toggleBtn}>
@@ -36,7 +36,7 @@ const ShowAlarms = ({
             onColor="#0066FF"
             offColor="#B4C1D5"
             size={"medium"}
-            onToggle={() => selectAlarm(value)}
+            onToggle={() => deleteSelectedData(value)}
           />
         </View>
       </View>

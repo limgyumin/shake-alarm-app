@@ -82,7 +82,6 @@ const AddScreen = ({ navigation }) => {
           console.log(datas);
         });
       });
-      //removeAllData();
       navigation.navigate("Main", { message: "refresh" });
     },
     [checkKeyValues]
