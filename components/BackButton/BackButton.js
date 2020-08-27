@@ -27,15 +27,16 @@ const AddBack = ({ navigation }) => {
 
 const style = StyleSheet.create({
   backView: {
-    width: "10%",
-    height: "12%",
+    width: "7%",
+    height: "5%",
+    marginTop: screenHeight * 0.05,
+    marginLeft: screenWidth * 0.03,
   },
   back: {
     position: "absolute",
-    left: screenWidth * 0.033,
-    bottom: screenHeight * 0.01,
-    width: screenWidth * 0.08,
-    height: screenWidth * 0.08,
+    bottom: screenHeight * 0.0005,
+    width: screenWidth * 0.07,
+    height: screenWidth * 0.07,
   },
 });
 

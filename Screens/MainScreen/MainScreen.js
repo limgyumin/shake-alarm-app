@@ -34,6 +34,10 @@ const MainScreen = ({ navigation }) => {
     });
   };
 
+  const selectAlarm = (value) => {
+    console.log(value);
+  };
+
   const getAlarmData = async () => {
     await AsyncStorage.getAllKeys((err, keys) => {
       AsyncStorage.multiGet(keys, (err, datas) => {
@@ -82,6 +86,7 @@ const MainScreen = ({ navigation }) => {
             notify={data.notify}
             sleep={data.sleep}
             time={data.time}
+            selectAlarm={selectAlarm}
           />
         ))}
       </ScrollView>

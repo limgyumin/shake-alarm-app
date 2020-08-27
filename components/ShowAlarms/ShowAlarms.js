@@ -6,7 +6,15 @@ import ToggleSwitch from "toggle-switch-react-native";
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
 
-const ShowAlarms = ({ value, activated, memo, notify, sleep, time }) => {
+const ShowAlarms = ({
+  value,
+  activated,
+  memo,
+  notify,
+  sleep,
+  time,
+  selectAlarm,
+}) => {
   const sliceText = (string, maxLen) => {
     if (string.length > maxLen) {
       return string.slice(0, maxLen) + "...";
@@ -28,7 +36,7 @@ const ShowAlarms = ({ value, activated, memo, notify, sleep, time }) => {
             onColor="#0066FF"
             offColor="#B4C1D5"
             size={"medium"}
-            onToggle={() => {}}
+            onToggle={() => selectAlarm(value)}
           />
         </View>
       </View>

@@ -97,7 +97,7 @@ const style = StyleSheet.create({
     marginTop: screenHeight * 0.01,
   },
   timeBtn: {
-    width: screenWidth * 0.908,
+    width: screenWidth * 0.91,
     height: screenHeight * 0.062,
     backgroundColor: "#C8DEFF",
     borderRadius: screenWidth * 0.03,
