@@ -15,7 +15,7 @@ const AddTitle = () => {
 
 const style = StyleSheet.create({
   textPlace: {
-    marginTop: screenHeight * 0.02,
+    marginTop: screenHeight * 0.11,
     marginLeft: screenWidth * 0.04,
   },
   text1: {

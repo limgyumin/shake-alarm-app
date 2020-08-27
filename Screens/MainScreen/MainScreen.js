@@ -81,7 +81,13 @@ const MainScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <EditAlarm removeAllData={removeAllData} />
+      <View>
+        {alarmDatas.length ? (
+          <EditAlarm removeAllData={removeAllData} />
+        ) : (
+          <View />
+        )}
+      </View>
       <ScrollView showsVerticalScrollIndicator={false}>
         <MainTitle />
         {alarmDatas.map((data, index) => (

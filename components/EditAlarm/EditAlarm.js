@@ -18,16 +18,12 @@ const EditAlarm = ({ removeAllData }) => {
 
 const style = StyleSheet.create({
   editView: {
-    width: "9%",
-    height: "5%",
+    position: "absolute",
     marginTop: screenHeight * 0.06,
     marginLeft: screenWidth * 0.04,
+    width: screenWidth * 0.09,
   },
   edit: {
-    position: "absolute",
-    bottom: screenHeight * 0.0005,
-    width: screenWidth * 0.08,
-    height: screenWidth * 0.08,
     fontSize: screenWidth * 0.042,
     color: "#0066FF",
     fontWeight: "700",
