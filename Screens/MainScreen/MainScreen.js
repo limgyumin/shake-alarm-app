@@ -18,6 +18,8 @@ const MainScreen = ({ navigation }) => {
   useEffect(() => {
     YellowBox.ignoreWarnings([
       "Animated: `useNativeDriver` was not specified.",
+      "Warning: componentWillReceiveProps has been renamed",
+      "Warning: componentWillMount has been renamed",
     ]);
   }, []);
 

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import moment from "moment";
 import ToggleSwitch from "toggle-switch-react-native";
+import Swipeout from "react-native-swipeout";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
@@ -23,45 +24,54 @@ const ShowAlarms = ({
     }
   };
 
+  var swipeButton = [
+    {
+      text: "삭제",
+      color: "#FFFFFF",
+      backgroundColor: "#FF5454",
+      onPress: () => {
+        deleteSelectedData(value);
+      },
+    },
+  ];
+
   return (
-    <View style={style.place}>
+    <Swipeout right={swipeButton} style={style.place}>
       <View style={style.alarmPlace}>
-        <View style={style.textPlace}>
+        <View style={style.dataPlace}>
           <Text style={style.memo}>{memo ? sliceText(memo, 16) : "알람"}</Text>
           <Text style={style.time}>{moment(time).format("HH:mm")}</Text>
         </View>
-        <View style={style.toggleBtn}>
+        <View style={style.btnPlace}>
           <ToggleSwitch
             isOn={true}
             onColor="#0066FF"
             offColor="#B4C1D5"
             size={"medium"}
-            onToggle={() => deleteSelectedData(value)}
+            onToggle={() => {}}
           />
         </View>
       </View>
-    </View>
+    </Swipeout>
   );
 };
 
 const style = StyleSheet.create({
   place: {
-    alignItems: "center",
+    width: "100%",
+    backgroundColor: "#F2F7FF",
   },
   alarmPlace: {
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "#F2F7FF",
-    borderRadius: screenWidth * 0.05,
-    width: screenWidth * 0.92,
+    alignItems: "center",
     height: screenHeight * 0.12,
     paddingHorizontal: screenWidth * 0.04,
-    marginBottom: screenHeight * 0.016,
   },
-  textPlace: {
+  dataPlace: {
     justifyContent: "center",
   },
-  toggleBtn: {
+  btnPlace: {
     justifyContent: "center",
   },
   memo: {
