@@ -24,7 +24,7 @@ const ShowAlarms = ({
     }
   };
 
-  var swipeButton = [
+  let swipeButton = [
     {
       text: "삭제",
       color: "#FFFFFF",

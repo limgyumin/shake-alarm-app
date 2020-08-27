@@ -24,16 +24,18 @@ const MainScreen = ({ navigation }) => {
   }, []);
 
   useEffect(() => {
-    getAlarmData();
+    return () => getAlarmData();
   }, [navigation.state.params, refresh]);
 
-  const removeAllData = () => {
-    AsyncStorage.getAllKeys((err, keys) => {
-      AsyncStorage.multiRemove(keys, (err) => {
-        console.log("data all removed");
-        setRefresh(refresh + 1);
+  const removeAllData = async () => {
+    if (alarmDatas.length) {
+      await AsyncStorage.getAllKeys((err, keys) => {
+        AsyncStorage.multiRemove(keys, (err) => {
+          console.log("data all removed");
+          setRefresh(refresh + 1);
+        });
       });
-    });
+    }
   };
 
   const deleteSelectedData = async (value) => {
