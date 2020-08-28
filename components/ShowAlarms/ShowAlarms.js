@@ -54,11 +54,19 @@ const ShowAlarms = ({
   ];
 
   return (
-    <Swipeout right={swipeButton} autoClose={true} style={style.place}>
+    <Swipeout
+      right={swipeButton}
+      autoClose={true}
+      style={active ? style.place : style.placeDis}
+    >
       <View style={style.alarmPlace}>
         <View style={style.dataPlace}>
-          <Text style={style.memo}>{memo ? sliceText(memo, 16) : "알람"}</Text>
-          <Text style={style.time}>{moment(time).format("HH:mm")}</Text>
+          <Text style={active ? style.memo : style.memoDis}>
+            {memo ? sliceText(memo, 16) : "알람"}
+          </Text>
+          <Text style={active ? style.time : style.timeDis}>
+            {moment(time).format("HH:mm")}
+          </Text>
         </View>
         <View style={style.btnPlace}>
           <ToggleSwitch
@@ -79,6 +87,10 @@ const style = StyleSheet.create({
     width: "100%",
     backgroundColor: "#F2F7FF",
   },
+  placeDis: {
+    width: "100%",
+    backgroundColor: "#F9FBFF",
+  },
   alarmPlace: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -95,8 +107,16 @@ const style = StyleSheet.create({
     color: "#768AA8",
     fontSize: screenWidth * 0.04,
   },
+  memoDis: {
+    color: "#C9CED5",
+    fontSize: screenWidth * 0.04,
+  },
   time: {
     color: "#768AA8",
+    fontSize: screenWidth * 0.09,
+  },
+  timeDis: {
+    color: "#C9CED5",
     fontSize: screenWidth * 0.09,
   },
 });
