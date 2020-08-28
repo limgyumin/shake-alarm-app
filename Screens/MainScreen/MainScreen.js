@@ -24,59 +24,78 @@ const MainScreen = ({ navigation }) => {
   }, []);
 
   useEffect(() => {
-    return () => getAlarmData();
+    processAlarmData();
   }, [navigation.state.params, refresh]);
 
   const removeAllData = async () => {
     if (alarmDatas.length) {
-      await AsyncStorage.getAllKeys((err, keys) => {
-        AsyncStorage.multiRemove(keys, (err) => {
-          console.log("data all removed");
-          setRefresh(refresh + 1);
+      try {
+        await AsyncStorage.getAllKeys((err, keys) => {
+          AsyncStorage.multiRemove(keys, (err) => {
+            console.log("data all removed");
+            setRefresh(refresh + 1);
+          });
         });
-      });
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
-  const deleteSelectedData = async (value) => {
-    await AsyncStorage.removeItem(value, (err) => {
-      console.log("selected data removed");
-      setRefresh(refresh + 1);
-    });
+  const removeSelectedData = async (value) => {
+    try {
+      await AsyncStorage.removeItem(value, (err) => {
+        console.log("selected data removed");
+        setRefresh(refresh + 1);
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const getAlarmData = async () => {
-    await AsyncStorage.getAllKeys((err, keys) => {
-      AsyncStorage.multiGet(keys, (err, datas) => {
-        datas.map((data, i) => {
-          if (data[1]) {
-            const parsedData = JSON.parse(data[1]);
-            parsedData.key = data[0];
-            datas[i] = parsedData;
-          }
-        });
-
-        datas = datas.sort((a, b) => {
-          const aTime = new Date(a.time).getTime();
-          const bTime = new Date(b.time).getTime();
-          if (aTime > bTime) {
-            return 1;
-          }
-          if (aTime < bTime) {
-            return -1;
-          }
-          return 0;
-        });
-
-        const check = datas[0];
-        if (check && check[1] !== null) {
-          setAlarmDatas(datas);
-        } else {
-          setAlarmDatas([]);
-        }
-        console.log(datas.length);
-      });
+  const sortDatas = (datas) => {
+    datas.sort((a, b) => {
+      const aTime = new Date(a.time).getTime();
+      const bTime = new Date(b.time).getTime();
+      if (aTime > bTime) {
+        return 1;
+      }
+      if (aTime < bTime) {
+        return -1;
+      }
+      return 0;
     });
+
+    return datas;
+  };
+
+  const checkDatasNull = (datas) => {
+    const check = datas[0];
+    if (check && check[1] !== null) {
+      setAlarmDatas(datas);
+    } else {
+      setAlarmDatas([]);
+    }
+  };
+
+  const processAlarmData = async () => {
+    try {
+      await AsyncStorage.getAllKeys((err, keys) => {
+        AsyncStorage.multiGet(keys, (err, datas) => {
+          datas.map((data, i) => {
+            if (data[1]) {
+              const parsedData = JSON.parse(data[1]);
+              parsedData.key = data[0];
+              datas[i] = parsedData;
+            }
+          });
+          datas = sortDatas(datas);
+          checkDatasNull(datas);
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -99,7 +118,7 @@ const MainScreen = ({ navigation }) => {
             notify={data.notify}
             sleep={data.sleep}
             time={data.time}
-            deleteSelectedData={deleteSelectedData}
+            removeSelectedData={removeSelectedData}
           />
         ))}
       </ScrollView>
