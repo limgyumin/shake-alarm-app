@@ -5,11 +5,15 @@ import {
   YellowBox,
   AsyncStorage,
   ScrollView,
+  Dimensions,
 } from "react-native";
 import EditAlarm from "../../components/EditAlarm/EditAlarm";
 import MainTitle from "../../components/MainTitle/MainTitle";
 import AddAlarm from "../../components/AddAlarm/AddAlarm";
 import ShowAlarms from "../../components/ShowAlarms/ShowAlarms";
+
+const screenWidth = Math.round(Dimensions.get("window").width);
+const screenHeight = Math.round(Dimensions.get("window").height);
 
 const MainScreen = ({ navigation }) => {
   const [alarmDatas, setAlarmDatas] = useState([]);
@@ -100,7 +104,7 @@ const MainScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View>
+      <View style={styles.btnPlace}>
         {alarmDatas.length ? (
           <EditAlarm removeAllData={removeAllData} />
         ) : (
@@ -131,6 +135,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
+  },
+  btnPlace: {
+    width: "100%",
+    height: screenHeight * 0.1,
   },
 });
 

@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import NumberTicker from "../NumberTicker/NumberTicker";
+import RNDateTimePicker from "@react-native-community/datetimepicker";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
@@ -57,7 +58,8 @@ const SetTimeBtn = ({
         confirmTextIOS={"확인"}
         cancelTextIOS={"취소"}
         headerTextIOS={"알람 시간 설정"}
-        timePickerModeAndroid={"spinner"}
+        textColor={"#0066FF"}
+        display={"spinner"}
         date={time}
         mode={"time"}
         is24Hour={false}

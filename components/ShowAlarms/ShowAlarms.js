@@ -14,7 +14,7 @@ const ShowAlarms = ({
   notify,
   sleep,
   time,
-  deleteSelectedData,
+  removeSelectedData,
 }) => {
   const sliceText = (string, maxLen) => {
     if (string.length > maxLen) {
@@ -30,7 +30,7 @@ const ShowAlarms = ({
       color: "#FFFFFF",
       backgroundColor: "#FF5454",
       onPress: () => {
-        deleteSelectedData(value);
+        removeSelectedData(value);
       },
     },
   ];
@@ -64,7 +64,6 @@ const style = StyleSheet.create({
   alarmPlace: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
     height: screenHeight * 0.12,
     paddingHorizontal: screenWidth * 0.04,
   },
@@ -77,12 +76,10 @@ const style = StyleSheet.create({
   memo: {
     color: "#768AA8",
     fontSize: screenWidth * 0.04,
-    top: screenHeight * 0.004,
   },
   time: {
     color: "#768AA8",
     fontSize: screenWidth * 0.09,
-    bottom: screenHeight * 0.004,
   },
 });
 

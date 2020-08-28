@@ -15,9 +15,9 @@ const MainTitle = () => {
 
 const style = StyleSheet.create({
   textPlace: {
-    marginTop: screenHeight * 0.11,
+    marginTop: screenHeight * 0.01,
     marginLeft: screenWidth * 0.04,
-    marginBottom: screenHeight * 0.03,
+    marginBottom: screenHeight * 0.04,
   },
   text1: {
     fontSize: screenWidth * 0.06,

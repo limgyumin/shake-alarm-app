@@ -12,24 +12,20 @@ const screenHeight = Math.round(Dimensions.get("window").height);
 
 const EditAlarm = ({ removeAllData }) => {
   return (
-    <>
-      <TouchableOpacity
-        style={style.editView}
-        activeOpacity={0.6}
-        onPress={() => removeAllData()}
-      >
-        <Text style={style.edit}>편집</Text>
-      </TouchableOpacity>
-      <View style={style.header}></View>
-    </>
+    <TouchableOpacity
+      style={style.editView}
+      activeOpacity={0.6}
+      onPress={() => removeAllData()}
+    >
+      <Text style={style.edit}>편집</Text>
+    </TouchableOpacity>
   );
 };
 
 const style = StyleSheet.create({
   editView: {
-    position: "absolute",
-    zIndex: 11,
-    marginTop: screenHeight * 0.06,
+    marginTop: screenHeight * 0.07,
+    marginBottom: screenHeight * 0.014,
     marginLeft: screenWidth * 0.04,
     width: screenWidth * 0.09,
   },
@@ -40,7 +36,6 @@ const style = StyleSheet.create({
   },
   header: {
     position: "absolute",
-    zIndex: 10,
     width: "100%",
     height: screenHeight * 0.11,
     backgroundColor: "#FFFFFF",
