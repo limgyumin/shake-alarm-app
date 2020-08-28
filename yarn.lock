@@ -4565,6 +4565,11 @@ react-native-alarm-clock@^2.0.0:
   resolved "https://registry.yarnpkg.com/react-native-alarm-clock/-/react-native-alarm-clock-2.0.0.tgz#1c780a97e580a66bb964a99f35618c3b3f77b744"
   integrity sha512-LT9ke6zXz3Qfqe0WqrwWvlDfrd2TiRA4fLxHUOqjlv/csJNOVUG+/RGeAb3hlRKPKX6ishWr3XtTTJpvU2AeEQ==
 
+react-native-animated-header@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-native-animated-header/-/react-native-animated-header-1.0.7.tgz#df9793e60b86e9106b31dcb1a3f2ef4ac37c0db9"
+  integrity sha512-h+YN9eukJYreoWIYrZu5oZL8vKoynkoqe8Icfn3k+0kXRtiZWA4rP31uabF8lavLm5F3N28uIj7BFvWthLrN7Q==
+
 react-native-animated-number@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-native-animated-number/-/react-native-animated-number-1.1.1.tgz#09d0ac108d24620d6a8515eea2f7d6643ba3d62a"
@@ -4670,10 +4675,9 @@ react-native-screens@~2.9.0:
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.9.0.tgz#ead2843107ba00fee259aa377582e457c74f1f3b"
   integrity sha512-5MaiUD6HA3nzY3JbVI8l3V7pKedtxQF3d8qktTVI0WmWXTI4QzqOU8r8fPVvfKo3MhOXwhWBjr+kQ7DZaIQQeg==
 
-react-native-swipeout@^2.3.6:
+"react-native-swipeout@git+https://github.com/krakz999/react-native-swipeout":
   version "2.3.6"
-  resolved "https://registry.yarnpkg.com/react-native-swipeout/-/react-native-swipeout-2.3.6.tgz#47dac8a835825cf3f2eef9e495574a3d9ab6d3fa"
-  integrity sha512-t9suUCspzck4vp2pWggWe0frS/QOtX6yYCawHnEes75A7dZCEE74bxX2A1bQzGH9cUMjq6xsdfC94RbiDKIkJg==
+  resolved "git+https://github.com/krakz999/react-native-swipeout#80cdfe843713a48b7446393cab1476aaa5ec4965"
   dependencies:
     create-react-class "^15.6.0"
     prop-types "^15.5.10"

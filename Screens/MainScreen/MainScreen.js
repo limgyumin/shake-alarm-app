@@ -74,7 +74,7 @@ const MainScreen = ({ navigation }) => {
         } else {
           setAlarmDatas([]);
         }
-        console.log(datas);
+        console.log(datas.length);
       });
     });
   };

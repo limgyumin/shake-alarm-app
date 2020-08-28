@@ -36,7 +36,7 @@ const ShowAlarms = ({
   ];
 
   return (
-    <Swipeout right={swipeButton} style={style.place}>
+    <Swipeout right={swipeButton} autoClose={true} style={style.place}>
       <View style={style.alarmPlace}>
         <View style={style.dataPlace}>
           <Text style={style.memo}>{memo ? sliceText(memo, 16) : "알람"}</Text>

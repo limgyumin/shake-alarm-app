@@ -77,11 +77,11 @@ const AddScreen = ({ navigation }) => {
       await AsyncStorage.setItem(key, JSON.stringify(alarmData), () => {
         console.log("data saved");
       });
-      await AsyncStorage.getAllKeys((err, keys) => {
-        AsyncStorage.multiGet(keys, (err, datas) => {
-          console.log(datas);
-        });
-      });
+      // await AsyncStorage.getAllKeys((err, keys) => {
+      //   AsyncStorage.multiGet(keys, (err, datas) => {
+      //     console.log(datas);
+      //   });
+      // });
       navigation.navigate("Main", { message: "refresh" });
     },
     [checkKeyValues]
