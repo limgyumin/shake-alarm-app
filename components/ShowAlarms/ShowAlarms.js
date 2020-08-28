@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import moment from "moment";
 import ToggleSwitch from "toggle-switch-react-native";
@@ -16,6 +16,8 @@ const ShowAlarms = ({
   time,
   removeSelectedData,
 }) => {
+  const [active, setActive] = useState(activated);
+
   const sliceText = (string, maxLen) => {
     if (string.length > maxLen) {
       return string.slice(0, maxLen) + "...";
@@ -44,11 +46,13 @@ const ShowAlarms = ({
         </View>
         <View style={style.btnPlace}>
           <ToggleSwitch
-            isOn={true}
+            isOn={active}
             onColor="#0066FF"
             offColor="#B4C1D5"
             size={"medium"}
-            onToggle={() => {}}
+            onToggle={() => {
+              setActive(!active);
+            }}
           />
         </View>
       </View>
