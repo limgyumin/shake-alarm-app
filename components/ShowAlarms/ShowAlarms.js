@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import React, { useEffect, useState, useCallback } from "react";
+import { StyleSheet, Text, View, Dimensions, AsyncStorage } from "react-native";
 import moment from "moment";
 import ToggleSwitch from "toggle-switch-react-native";
 import Swipeout from "react-native-swipeout";
@@ -26,6 +26,22 @@ const ShowAlarms = ({
     }
   };
 
+  const saveActive = useCallback(
+    async (value) => {
+      setActive(!active);
+      await AsyncStorage.mergeItem(
+        value,
+        JSON.stringify({ activated: !active }),
+        () => {
+          AsyncStorage.getItem(value, (err, result) => {
+            console.log(`${value}${result}`);
+          });
+        }
+      );
+    },
+    [active]
+  );
+
   let swipeButton = [
     {
       text: "삭제",
@@ -50,9 +66,7 @@ const ShowAlarms = ({
             onColor="#0066FF"
             offColor="#B4C1D5"
             size={"medium"}
-            onToggle={() => {
-              setActive(!active);
-            }}
+            onToggle={() => saveActive(value)}
           />
         </View>
       </View>

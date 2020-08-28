@@ -48,7 +48,7 @@ const MainScreen = ({ navigation }) => {
 
   const removeSelectedData = async (value) => {
     try {
-      await AsyncStorage.removeItem(value, (err) => {
+      await AsyncStorage.removeItem(value, () => {
         console.log("selected data removed");
         setRefresh(refresh + 1);
       });
