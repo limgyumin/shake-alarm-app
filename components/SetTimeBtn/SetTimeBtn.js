@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import NumberTicker from "../NumberTicker/NumberTicker";
-import RNDateTimePicker from "@react-native-community/datetimepicker";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
@@ -17,8 +16,7 @@ const screenHeight = Math.round(Dimensions.get("window").height);
 const SetTimeBtn = ({
   visible,
   time,
-  showDateTimePicker,
-  hideDateTimePicker,
+  dateTimePickerActivate,
   handleTimePicked,
 }) => {
   return (
@@ -45,7 +43,7 @@ const SetTimeBtn = ({
         <TouchableOpacity
           style={style.timeBtn}
           activeOpacity={0.7}
-          onPress={() => showDateTimePicker()}
+          onPress={() => dateTimePickerActivate()}
         >
           <Text style={style.timeText}>알람 시간 설정</Text>
           <Image
@@ -60,12 +58,12 @@ const SetTimeBtn = ({
         headerTextIOS={"알람 시간 설정"}
         textColor={"#0066FF"}
         display={"spinner"}
-        date={time}
+        //date={time}
         mode={"time"}
         is24Hour={false}
         isVisible={visible}
         onConfirm={(time) => handleTimePicked(time)}
-        onCancel={() => hideDateTimePicker()}
+        onCancel={() => dateTimePickerActivate()}
       />
     </>
   );

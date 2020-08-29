@@ -20,17 +20,13 @@ const AddScreen = ({ navigation }) => {
     ]);
   }, []);
 
-  const showDateTimePicker = () => {
-    setVisible(true);
-  };
-
-  const hideDateTimePicker = () => {
-    setVisible(false);
-  };
+  const dateTimePickerActivate = useCallback(() => {
+    setVisible(!visible);
+  }, [visible]);
 
   const handleTimePicked = (time) => {
     setTime(new Date(time));
-    hideDateTimePicker();
+    dateTimePickerActivate();
   };
 
   const nofToggleActivate = useCallback(() => {
@@ -94,8 +90,7 @@ const AddScreen = ({ navigation }) => {
       <SetTimeBtn
         visible={visible}
         time={time}
-        showDateTimePicker={showDateTimePicker}
-        hideDateTimePicker={hideDateTimePicker}
+        dateTimePickerActivate={dateTimePickerActivate}
         handleTimePicked={handleTimePicked}
       />
       <WriteMemo handleMemo={handleMemo} />

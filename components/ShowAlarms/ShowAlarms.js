@@ -31,12 +31,12 @@ const ShowAlarms = ({
       setActive(!active);
       await AsyncStorage.mergeItem(
         value,
-        JSON.stringify({ activated: !active }),
-        () => {
-          AsyncStorage.getItem(value, (err, result) => {
-            console.log(`${value}${result}`);
-          });
-        }
+        JSON.stringify({ activated: !active })
+        // () => {
+        //   AsyncStorage.getItem(value, (err, result) => {
+        //     console.log(`${value}${result}`);
+        //   });
+        // }
       );
     },
     [active]
