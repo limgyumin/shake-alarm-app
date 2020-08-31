@@ -4560,28 +4560,10 @@ react-lifecycles-compat@2.0.0:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-2.0.0.tgz#71d9c4cde47114c4102454f76da055c2bc48c948"
   integrity sha512-txfpPCQYiazVdcbMRhatqWKcAxJweUu2wDXvts5/7Wyp6+Y9cHojqXHsLPEckzutfHlxZhG8Oiundbmp8Fd6eQ==
 
-react-native-alarm-clock@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-alarm-clock/-/react-native-alarm-clock-2.0.0.tgz#1c780a97e580a66bb964a99f35618c3b3f77b744"
-  integrity sha512-LT9ke6zXz3Qfqe0WqrwWvlDfrd2TiRA4fLxHUOqjlv/csJNOVUG+/RGeAb3hlRKPKX6ishWr3XtTTJpvU2AeEQ==
-
-react-native-animated-header@^1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/react-native-animated-header/-/react-native-animated-header-1.0.7.tgz#df9793e60b86e9106b31dcb1a3f2ef4ac37c0db9"
-  integrity sha512-h+YN9eukJYreoWIYrZu5oZL8vKoynkoqe8Icfn3k+0kXRtiZWA4rP31uabF8lavLm5F3N28uIj7BFvWthLrN7Q==
-
-react-native-animated-number@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-animated-number/-/react-native-animated-number-1.1.1.tgz#09d0ac108d24620d6a8515eea2f7d6643ba3d62a"
-  integrity sha512-DctpQ+h9wStPGmUeMkCuph7RQ828KcYXDgQtXQ3JtoRTK9kkv2vVwaNsefGXP8JBHtwAHoKLCegQxAdi1LhdbQ==
-
-react-native-animated-numbers@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/react-native-animated-numbers/-/react-native-animated-numbers-0.1.1.tgz#6d688115dffd65cb9a6642adab9f46f759b056bf"
-  integrity sha512-gRKYxfAkmvESm0uswcLKqElpdYOQoXunZSBHDTNVcb7uUftTSZhi5vYjjyYcPgVXyeI7sTCrVtz2lduqZO83xA==
-  dependencies:
-    react-native-gesture-handler "^1.7.0"
-    react-native-reanimated "^1.10.2"
+react-native-alarm-notification@^1.6.1:
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/react-native-alarm-notification/-/react-native-alarm-notification-1.6.1.tgz#88c3ec30dc45325b2c64eb92a47fff8f89745271"
+  integrity sha512-v7r1miZDO2ulLONOdbiG1LMhq0X6pvEA6zuPGD0CzTgnFN9H1GrWp1yVYLWCL3dJIoWxliUeUQR/FgNPI0Ob4w==
 
 react-native-appearance@~0.3.3:
   version "0.3.4"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import {
   StyleSheet,
   View,
@@ -11,6 +11,7 @@ import EditAlarm from "../../components/EditAlarm/EditAlarm";
 import MainTitle from "../../components/MainTitle/MainTitle";
 import AddAlarm from "../../components/AddAlarm/AddAlarm";
 import ShowAlarms from "../../components/ShowAlarms/ShowAlarms";
+import AlarmNotification from "../../components/AlarmNotification/AlarmNotification";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
@@ -114,16 +115,24 @@ const MainScreen = ({ navigation }) => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <MainTitle />
         {alarmDatas.map((data, index) => (
-          <ShowAlarms
-            key={index}
-            value={data.key}
-            activated={data.activated}
-            memo={data.memo}
-            notify={data.notify}
-            sleep={data.sleep}
-            time={data.time}
-            removeSelectedData={removeSelectedData}
-          />
+          <Fragment key={index}>
+            <ShowAlarms
+              value={data.key}
+              activated={data.activated}
+              memo={data.memo}
+              notify={data.notify}
+              sleep={data.sleep}
+              time={data.time}
+              removeSelectedData={removeSelectedData}
+            />
+            <AlarmNotification
+              value={data.key}
+              activated={data.activated}
+              notify={data.notify}
+              sleep={data.sleep}
+              time={data.time}
+            />
+          </Fragment>
         ))}
       </ScrollView>
       <AddAlarm navigation={navigation} />
